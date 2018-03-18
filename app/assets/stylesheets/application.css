@@ -1,0 +1,47 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require libs
+ *= require bootstrap-datepicker3
+ *= require select2
+ *= require select2-bootstrap
+ *= require_self
+ */
+
+body {
+  padding-top: 50px;
+}
+
+.page-title {
+  font-size: 24px;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+  margin: 0 0 10px;
+}
+
+.content {
+  margin-top: 10px;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-brand {
+  color: red !important;
+  background: yellow;
+  font-weight: bold;
+}
+
+.navbar-brand:hover {
+  background: white !important;
+}

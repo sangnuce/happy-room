@@ -1,0 +1,29 @@
+<%= form_for purchase do |f| %>
+  <div class="form-group">
+    <%= f.label "Người mua" %>
+    <%= f.select :user_id, users, {include_blank: "Chọn người mua"},
+      class: "form-control select2", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Ngày mua" %>
+    <%= f.text_field :date, class: "form-control date-picker",
+      required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Số tiền" %>
+    <div class="input-group">
+      <%= f.number_field :amount, class: "form-control", step: 1, min: 0,
+        required: true %>
+      <span class="input-group-addon">VNĐ</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Nội dung" %>
+    <%= f.text_area :note, class: "form-control", required: true %>
+  </div>
+  <div class="text-right">
+    <%= f.button type: :submit, class: "btn btn-primary" do %>
+      <i class="fa fa-floppy-o"></i> Lưu lại
+    <% end %>
+  </div>
+<% end %>
