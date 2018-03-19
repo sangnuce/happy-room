@@ -8,7 +8,8 @@
           <div class="input-group">
             <%= text_field_tag :month,
               params[:month] || Time.zone.today.strftime("%m/%Y"),
-              class: "form-control month-picker" %>
+              class: "form-control month-picker",
+              placeholder: "Chọn tháng" %>
             <span class="input-group-btn">
               <%= button_tag name: "", class: "btn btn-default" do %>
                 <i class="fa fa-search"></i>
@@ -45,7 +46,47 @@
             </tr>
           <% end %>
         </tbody>
+        <tfoot>
+          <tr class="text-bold">
+            <td colspan="3" class="text-right">Tổng:</td>
+            <td class="text-right"><%= number_to_currency @total_amount %></td>
+            <td colspan="2"></td>
+          </tr>
+          <tr class="text-bold">
+            <td colspan="3" class="text-right">Trung bình:</td>
+            <td class="text-right">
+              <%= number_to_currency(avg = @total_amount / @users.size) %>
+            </td>
+            <td colspan="2"></td>
+          </tr>
+        </tfoot>
       </table>
     </div>
+  </div>
+  <div class="col-md-12">
+    <table class="table table-hovered table-bordered table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center"></th>
+          <th class="text-center">Tiền đã mua</th>
+          <th class="text-center">Còn dư</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each.with_index 1 do |user, index| %>
+          <tr>
+            <td class="text-right"><%= index %></td>
+            <td><%= user.name %></td>
+            <td class="text-right text-bold">
+              <%= number_to_currency(x = user.amount_purchased_in_month(params[:month])) %>
+            </td>
+            <td class="text-right text-bold">
+              <%= number_to_currency(x - avg) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
