@@ -3,8 +3,9 @@ class PurchasesController < ApplicationController
   before_action :load_users, only: [:new, :edit]
 
   def index
-    date = params[:month] ? "01/#{params[:month]}".to_date : Time.zone.today
-    @purchases = Purchase.includes(:user).recent.in_month date
+    @purchases = Purchase.includes(:user).recent.in_month params[:month]
+    @total_amount = @purchases.reduce(0){|sum, item| sum + item.amount}
+    @users = User.all
   end
 
   def new
