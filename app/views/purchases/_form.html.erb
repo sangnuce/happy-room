@@ -21,6 +21,11 @@
     <%= f.label "Nội dung" %>
     <%= f.text_area :note, class: "form-control", required: true %>
   </div>
+  <div class="form-group">
+    <%= f.label "Chia cho" %>
+    <%= f.select :user_ids, users, {include_blank: "Chia cho"},
+      class: "form-control select2", required: true, multiple: true %>
+  </div>
   <div class="text-right">
     <%= f.button type: :submit, class: "btn btn-primary" do %>
       <i class="fa fa-floppy-o"></i> Lưu lại

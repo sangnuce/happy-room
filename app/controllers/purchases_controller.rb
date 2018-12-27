@@ -51,7 +51,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit :user_id, :date, :amount, :note
+    params.require(:purchase).permit :user_id, :date, :amount, :note, user_ids: []
   end
 
   def find_purchase
