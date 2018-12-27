@@ -4,6 +4,7 @@
   <td class="text-center"><%= l purchase.date %></td>
   <td class="text-right"><%= number_to_currency purchase.amount %></td>
   <td><%= purchase.note %></td>
+  <td><%= purchase.users.pluck(:name).join(", ") %></td>
   <td class="text-center">
     <%= link_to edit_purchase_path(purchase),
       class: "btn btn-info btn-xs" do %>

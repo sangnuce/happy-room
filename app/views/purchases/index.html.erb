@@ -34,6 +34,7 @@
             <th class="text-center">Ngày mua</th>
             <th class="text-center">Số tiền</th>
             <th class="text-center">Nội dung</th>
+            <th class="text-center">Chia cho</th>
             <th class="text-center">Thao tác</th>
           </tr>
         </thead>
@@ -42,7 +43,7 @@
             <%= render @purchases %>
           <% else %>
             <tr>
-              <td colspan="6">Chưa có khoản mua nào</td>
+              <td colspan="7">Chưa có khoản mua nào</td>
             </tr>
           <% end %>
         </tbody>
@@ -50,14 +51,7 @@
           <tr class="text-bold">
             <td colspan="3" class="text-right">Tổng:</td>
             <td class="text-right"><%= number_to_currency @total_amount %></td>
-            <td colspan="2"></td>
-          </tr>
-          <tr class="text-bold">
-            <td colspan="3" class="text-right">Trung bình:</td>
-            <td class="text-right">
-              <%= number_to_currency(avg = @total_amount / @users.size) %>
-            </td>
-            <td colspan="2"></td>
+            <td colspan="3"></td>
           </tr>
         </tfoot>
       </table>
@@ -69,7 +63,8 @@
         <tr>
           <th class="text-center">#</th>
           <th class="text-center"></th>
-          <th class="text-center">Tiền đã mua</th>
+          <th class="text-center">Tiền chi</th>
+          <th class="text-center">Tiền tiêu</th>
           <th class="text-center">Còn dư</th>
         </tr>
       </thead>
@@ -82,7 +77,10 @@
               <%= number_to_currency(x = user.amount_purchased_in_month(params[:month])) %>
             </td>
             <td class="text-right text-bold">
-              <%= number_to_currency(x - avg) %>
+              <%= number_to_currency(y = user.all_amount_in_month(params[:month])) %>
+            </td>
+            <td class="text-right text-bold">
+              <%= number_to_currency(x - y) %>
             </td>
           </tr>
         <% end %>
