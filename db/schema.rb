@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181227173927) do
+ActiveRecord::Schema.define(version: 20190324100500) do
 
   create_table "purchases", force: :cascade do |t|
     t.integer "user_id"
     t.date "date"
     t.float "amount"
     t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "summaries", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "summary_details", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "summary_id"
+    t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

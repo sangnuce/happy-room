@@ -6,13 +6,15 @@
   <td><%= purchase.note %></td>
   <td><%= purchase.users.pluck(:name).join(", ") %></td>
   <td class="text-center">
-    <%= link_to edit_purchase_path(purchase),
-      class: "btn btn-info btn-xs" do %>
-      <i class="fa fa-pencil"></i> Sửa
-    <% end %>
-    <%= link_to purchase_path(purchase), class: "btn btn-danger btn-xs",
-      data: {confirm: "Xác nhận xóa?"}, method: :delete do %>
-      <i class="fa fa-trash"></i> Xóa
+    <% if !@summary || purchase.created_at > @summary.created_at %>
+      <%= link_to edit_purchase_path(purchase),
+        class: "btn btn-info btn-xs" do %>
+        <i class="fa fa-pencil"></i> Sửa
+      <% end %>
+      <%= link_to purchase_path(purchase), class: "btn btn-danger btn-xs",
+        data: {confirm: "Xác nhận xóa?"}, method: :delete do %>
+        <i class="fa fa-trash"></i> Xóa
+      <% end %>
     <% end %>
   </td>
 </tr>

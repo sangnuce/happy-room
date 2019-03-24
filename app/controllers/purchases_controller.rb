@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :load_last_summary, only: [:index, :edit, :update, :destroy]
   before_action :find_purchase, only: [:edit, :update, :destroy]
   before_action :load_users, only: [:new, :edit]
 
@@ -60,9 +61,16 @@ class PurchasesController < ApplicationController
     return if @purchase
     flash[:warning] = "Không tìm thấy khoản chi"
     redirect_to root_path
+    return if !@summary || @purchase.created_at > @summary.created_at
+    flash[:warning] = "Không thực hiện được thao tác này"
+    redirect_to root_path
   end
 
   def load_users
     @users = User.pluck :name, :id
+  end
+
+  def load_last_summary
+    @summary = Summary.last
   end
 end
