@@ -16,6 +16,13 @@
         <%= render "layouts/navbar" %>
       </header>
       <div class="container">
+        <div class="flash-errors">
+          <% flash.each do |message_type, message| %>
+            <div class="autohide alert alert-<%= message_type %>">
+              <%= message.html_safe %>
+            </div>
+          <% end %>
+        </div>
         <%= yield %>
       </div>
     </div>

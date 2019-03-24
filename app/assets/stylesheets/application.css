@@ -49,3 +49,15 @@ body {
 .text-bold {
   font-weight: bold;
 }
+
+hr {
+  margin: 5px 0;
+}
+
+.flash-errors {
+  margin-top: 10px;
+}
+
+.flash-errors .alert {
+  margin: 0;
+}

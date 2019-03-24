@@ -1,0 +1,39 @@
+<h1 class="page-title">Danh sách tổng tiền</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_tag summaries_path, method: :post do %>
+      <div class="form-group">
+        <div class="form-inline">
+          <%= button_tag type: :submit, class: "btn btn-primary pull-right" do %>
+            <i class="fa fa-plus"></i> Thêm mới
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <div class="content">
+      <table class="table table-hovered table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Thời gian tạo</th>
+            <th class="text-center">Chi tiết</th>
+            <th class="text-center">Trạng thái</th>
+            <th class="text-center">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @summaries.any? %>
+            <%= render @summaries %>
+          <% else %>
+            <tr>
+              <td colspan="5">Chưa có chi tiết tổng tiền nào</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

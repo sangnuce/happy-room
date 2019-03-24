@@ -20,13 +20,17 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+  $('.autohide').delay(2500).slideUp('slow');
+
   $('.date-picker').datepicker({
     format: 'yyyy-mm-dd'
   });
+
   $('.month-picker').datepicker({
       format: 'mm/yyyy',
       minViewMode: 'months'
   });
+
   $('.select2').select2({
     theme: 'bootstrap'
   });

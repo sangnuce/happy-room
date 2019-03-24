@@ -2,6 +2,9 @@ en:
   date:
     formats:
       default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
   number:
     currency:
       format:
@@ -10,3 +13,7 @@ en:
         separator: "."
         delimiter: ","
         precision: 0
+  summary:
+    statuses:
+      not_completed: "Chưa hoàn tất"
+      completed: "Đã hoàn tất"

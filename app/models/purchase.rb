@@ -8,6 +8,11 @@ class Purchase < ApplicationRecord
     date = month ? "01/#{month}".to_date : Time.zone.today
     where "date >= ? AND date <= ?", date.beginning_of_month, date.end_of_month
   end
+  scope :after_last_summary, -> {
+    last_summary = Summary.last
+    return unless last_summary
+    where("created_at > ?", last_summary.created_at)
+  }
 
   after_save :update_user_purchase_amount
 
