@@ -8,8 +8,8 @@
           <div class="input-group">
             <%= text_field_tag :month,
               params[:month] || Time.zone.today.strftime("%m/%Y"),
-              class: "form-control month-picker",
-              placeholder: "Chọn tháng" %>
+              class: "form-control month-picker submit-on-change",
+              placeholder: "Chọn tháng", autocomplete: :off %>
             <span class="input-group-btn">
               <%= button_tag name: "", class: "btn btn-default" do %>
                 <i class="fa fa-search"></i>

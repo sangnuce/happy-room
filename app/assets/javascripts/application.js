@@ -15,23 +15,30 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require moment
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.vi
 //= require select2
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-  $('.autohide').delay(2500).slideUp('slow');
+  $('.autohide').delay(3000).slideUp('slow');
 
   $('.date-picker').datepicker({
-    format: 'yyyy-mm-dd'
+    format: 'yyyy-mm-dd',
+    language: 'vi'
   });
 
   $('.month-picker').datepicker({
-      format: 'mm/yyyy',
-      minViewMode: 'months'
+    format: 'mm/yyyy',
+    minViewMode: 'months',
+    language: 'vi'
   });
 
   $('.select2').select2({
     theme: 'bootstrap'
   });
+});
+
+$(document).on('change', '.submit-on-change', function() {
+  $(this).closest('form').submit();
 });

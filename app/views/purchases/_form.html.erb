@@ -7,19 +7,19 @@
   <div class="form-group">
     <%= f.label "Ngày mua" %>
     <%= f.text_field :date, value: f.object.date || Time.zone.today,
-      class: "form-control date-picker", required: true %>
+      class: "form-control date-picker", required: true, autocomplete: :off %>
   </div>
   <div class="form-group">
     <%= f.label "Số tiền" %>
     <div class="input-group">
       <%= f.number_field :amount, class: "form-control", step: 1, min: 0,
-        required: true %>
+        required: true, autocomplete: :off %>
       <span class="input-group-addon">VNĐ</span>
     </div>
   </div>
   <div class="form-group">
     <%= f.label "Nội dung" %>
-    <%= f.text_area :note, class: "form-control", required: true %>
+    <%= f.text_area :note, class: "form-control", required: true, autocomplete: :off %>
   </div>
   <div class="form-group">
     <%= f.label "Chia cho" %>
