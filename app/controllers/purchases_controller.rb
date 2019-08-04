@@ -11,6 +11,7 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = Purchase.new
+    @purchase.user_ids = @users.map(&:second)
   end
 
   def create
